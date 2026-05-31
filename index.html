@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nam Cao</title>
+  <meta name="description" content="Nam Cao (Simon) is an MS student at KAIST AI (OSI Lab) working on efficient and safe large language models: speculative decoding, diffusion language models, and adversarial robustness." />
+  <meta name="author" content="Nam Cao" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Nam Cao" />
+  <meta property="og:description" content="MS student at KAIST AI (OSI Lab). Efficient & safe large language models." />
+  <meta property="og:url" content="https://simoncao1207.github.io/" />
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%232f6db5'/%3E%3Ctext%20x='16'%20y='23'%20font-family='Arial,sans-serif'%20font-size='19'%20font-weight='700'%20fill='%23ffffff'%20text-anchor='middle'%3EN%3C/text%3E%3C/svg%3E" />
+
+  <!-- Prevent theme flash before CSS loads -->
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem("theme");
+        var sysDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.setAttribute("data-theme", saved || (sysDark ? "dark" : "light"));
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ───────────────  NAV  ─────────────── -->
+  <header class="nav">
+    <div class="nav__inner">
+      <a class="nav__brand" href="#top">Nam Cao</a>
+      <nav class="nav__links" aria-label="Sections">
+        <a href="#about">About</a>
+        <a href="#news">News</a>
+        <a href="#publications">Publications</a>
+        <a href="#projects">Projects</a>
+        <a href="#awards">Awards</a>
+      </nav>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle theme">
+        <svg class="ic-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
+        <svg class="ic-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 13.5A8.5 8.5 0 1 1 10.5 3a6.8 6.8 0 0 0 10.5 10.5Z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <span id="top"></span>
+
+    <!-- ───────────────  ABOUT  ─────────────── -->
+    <section class="about" id="about">
+      <div class="about__card">
+        <img class="avatar" src="assets/avatar.jpg" alt="Nam Cao" width="500" height="500" />
+        <h1 class="about__name">Nam Cao</h1>
+        <p class="about__role">M.S. Student in AI</p>
+        <p class="about__org">KAIST AI · OSI Lab</p>
+        <div class="about__icons">
+          <a href="mailto:hainamkaist@gmail.com" aria-label="Email" title="Email">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm.4 2L12 13l8.6-6"/></svg>
+          </a>
+          <a href="https://github.com/SimonCao1207" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48l-.01-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.93.36.31.68.92.68 1.85l-.01 2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/nam-cao-797789168/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0ZM.25 8.25h4.5V23h-4.5V8.25ZM8.25 8.25h4.31v2h.06c.6-1.07 2.06-2.2 4.24-2.2 4.54 0 5.38 2.86 5.38 6.58V23h-4.5v-6.53c0-1.56-.03-3.56-2.17-3.56-2.17 0-2.5 1.7-2.5 3.45V23h-4.5V8.25Z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="about__bio">
+        <p>
+          Hi! I’m <strong>Nam Cao</strong>, a Master’s student at KAIST’s Kim Jaechul Graduate
+          School of AI (KAIST AI), advised by <strong>Prof. Se-Young Yun</strong> in OSI Lab.
+          I also earned my B.S. in Computer Science at KAIST.
+        </p>
+        <p>
+          My research is on <strong>efficient and safe large language models</strong> — making
+          inference faster and cheaper without giving up quality. These days I focus on
+          speculative decoding, diffusion language models, and the adversarial robustness of
+          vision-language models.
+        </p>
+        <p>
+          Feel free to <a href="mailto:hainamkaist@gmail.com">email me</a> if you’d like to chat
+          about efficient LLMs.
+        </p>
+      </div>
+    </section>
+
+    <!-- ───────────────  NEWS  ─────────────── -->
+    <section class="section" id="news">
+      <h2 class="section__title">News</h2>
+      <ul class="news">
+        <li>
+          <span class="news__date">May 2026</span>
+          <span class="news__text">🎉 We released our new paper <strong>BASTION</strong>, a budget-aware speculative-decoding method, on arXiv — my first paper as lead author!</span>
+        </li>
+        <li>
+          <span class="news__date">Feb 2026</span>
+          <span class="news__text">🎉 We released our paper <strong>SAGA</strong>, on attention-guided adversarial attacks against vision-language models, on arXiv.</span>
+        </li>
+        <li>
+          <span class="news__date">2025</span>
+          <span class="news__text">🏆 Awarded the <strong>KAIST Global Presidential Scholarship (KGPS)</strong>.</span>
+        </li>
+        <li>
+          <span class="news__date">Feb 2025</span>
+          <span class="news__text">🏫 Started my M.S. at KAIST AI, joining OSI Lab under Prof. Se-Young Yun.</span>
+        </li>
+        <li>
+          <span class="news__date">Aug 2024</span>
+          <span class="news__text">🎓 Graduated from KAIST with a B.S. in Computer Science.</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ───────────────  EDUCATION  ─────────────── -->
+    <section class="section" id="education">
+      <h2 class="section__title">Education</h2>
+      <ul class="edu">
+        <li class="edu__item">
+          <span class="edu__text"><strong>M.S. in Graduate School of AI</strong>, KAIST. Advised by Prof. Se-Young Yun</span>
+          <span class="edu__date">Feb 2025 – Present</span>
+        </li>
+        <li class="edu__item">
+          <span class="edu__text"><strong>B.S. in Computer Science</strong>, KAIST.</span>
+          <span class="edu__date">Aug 2020 – Aug 2024</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ───────────────  PUBLICATIONS  ─────────────── -->
+    <section class="section" id="publications">
+      <h2 class="section__title">Publications</h2>
+      <p class="section__note"><sup>*</sup> equal contribution</p>
+      <h3 class="pub-year">2026</h3>
+      <ul class="pubs">
+        <li class="pub">
+          <div class="pub__thumb">
+            <a class="zoom" href="assets/pub-bastion-full.png" aria-label="Enlarge BASTION figure">
+              <img src="assets/pub-bastion.png" alt="BASTION main figure" width="756" height="513" loading="lazy" />
+            </a>
+          </div>
+          <div class="pub__body">
+            <h4 class="pub__title">BASTION: Budget-Aware Speculative Decoding with Tree-structured Block Diffusion Drafting</h4>
+            <p class="pub__authors"><strong class="me">Nam Cao</strong><sup>*</sup>, Soowon Oh<sup>*</sup>, Yujin Kim, Hojung Jung, Huzama Ahmad, Sangmin Bae, Se-Young Yun</p>
+            <p class="pub__venue"><em>Manuscript under review</em>, 2026</p>
+            <p class="pub__links">
+              <a href="https://arxiv.org/abs/2605.29727" target="_blank" rel="noopener">arXiv</a>
+              <a href="https://github.com/kaist-ai-osi-lab/BASTION/" target="_blank" rel="noopener">Code</a>
+            </p>
+          </div>
+        </li>
+        <li class="pub">
+          <div class="pub__thumb">
+            <a class="zoom" href="assets/pub-saga-full.png" aria-label="Enlarge SAGA figure">
+              <img src="assets/pub-saga.png" alt="SAGA main figure" width="793" height="370" loading="lazy" />
+            </a>
+          </div>
+          <div class="pub__body">
+            <h4 class="pub__title">Stage-wise Attention-Guided Region Sequencing for Adversarial Attacks on Large Vision-Language Models (SAGA)</h4>
+            <p class="pub__authors">Jaehyun Kwak, <strong class="me">Nam Cao</strong>, Boryeong Cho, Segyu Lee, Sumyeong Ahn, Se-Young Yun</p>
+            <p class="pub__venue"><em>Manuscript under review</em>, 2026</p>
+            <p class="pub__links">
+              <a href="https://arxiv.org/abs/2602.04356" target="_blank" rel="noopener">arXiv</a>
+            </p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ───────────────  RESEARCH PROJECTS  ─────────────── -->
+    <section class="section" id="projects">
+      <h2 class="section__title">Research Projects</h2>
+      <ul class="gallery">
+        <li class="project">
+          <div class="project__info">
+            <div class="entry__head">
+              <span class="entry__role">On-Device Speculative Decoding</span>
+              <span class="entry__date">2025 – Present</span>
+            </div>
+            <p class="entry__org">Samsung Research (SoC Architecture team) × OSI Lab, KAIST — Co-Project Leader</p>
+            <p class="entry__desc">Building an evaluation framework and speculative-decoding strategies for faster on-device LLM inference.</p>
+          </div>
+          <div class="project__media">
+            <a class="zoom" href="assets/proj-samsung-full.png" aria-label="Enlarge on-device speculative decoding figure">
+              <img src="assets/proj-samsung.png" alt="On-device speculative decoding" width="720" height="405" loading="lazy" />
+            </a>
+          </div>
+        </li>
+        <li class="project">
+          <div class="project__info">
+            <div class="entry__head">
+              <span class="entry__role">Deep Learning for Air-Quality Forecasting</span>
+              <span class="entry__date">2025 – Mar 2026</span>
+            </div>
+            <p class="entry__org">National Institute of Environmental Research (NIER), Korea × OSI Lab, KAIST</p>
+            <p class="entry__desc">Training deep-learning models that forecast particulate-matter (PM) levels.</p>
+          </div>
+          <div class="project__media">
+            <a class="zoom" href="assets/proj-nier.png" aria-label="Enlarge air-quality forecasting figure">
+              <img src="assets/proj-nier.png" alt="Air-quality forecasting" width="850" height="361" loading="lazy" />
+            </a>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ───────────────  AWARDS  ─────────────── -->
+    <section class="section" id="awards">
+      <h2 class="section__title">Awards &amp; Honors</h2>
+      <ul class="awards">
+        <li><strong>KAIST Global Presidential Scholarship (KGPS)</strong> — four-semester graduate scholarship with a monthly living stipend. <span class="awards__year">(2025–2027)</span></li>
+        <li><strong>KAIST–Qualcomm Innovation Award</strong> — winning team at the KAIST–Qualcomm AI Hackathon. <span class="awards__year">(2023)</span></li>
+        <li><strong>KAIST International Undergraduate Scholarship</strong> — full-ride scholarship. <span class="awards__year">(2020)</span></li>
+        <li><strong>Vietnam Mathematical Olympiad (VMO)</strong> — Bronze Medal. <span class="awards__year">(2018, 2019)</span></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Nam Cao · <a href="mailto:hainamkaist@gmail.com">hainamkaist@gmail.com</a></p>
+    <p>Last updated May 2026 · <a href="#top">Back to top ↑</a></p>
+  </footer>
+
+  <!-- Figure lightbox -->
+  <div class="lightbox" id="lightbox" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-label="Figure viewer">
+    <button class="lightbox__close" id="lightboxClose" aria-label="Close figure viewer">&times;</button>
+    <img class="lightbox__img" id="lightboxImg" src="" alt="" />
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
