@@ -169,6 +169,12 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 1.25rem; }
 .pub__authors .me { color: var(--heading); font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
 .pub__authors sup { color: var(--link); }
 .pub__venue { margin: 0 0 .5rem; color: var(--muted); font-size: .94rem; }
+.pub__badge {
+  display: inline-block; font-size: .72rem; font-weight: 700; letter-spacing: .04em;
+  text-transform: uppercase; color: #d35f4e; vertical-align: middle;
+  padding: .1em .5em; border: 1px solid currentColor; border-radius: 4px;
+}
+:root[data-theme="dark"] .pub__badge { color: #ef8a7c; }
 .pub__links { margin: 0; display: flex; gap: .5rem; flex-wrap: wrap; }
 .pub__links a {
   font-size: .85rem; font-weight: 600;
