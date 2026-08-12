@@ -165,6 +165,10 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 1.25rem; }
 .zoom img { transition: opacity .2s ease; }
 .zoom:hover img { opacity: .92; }
 .pub__title { font-size: 1.08rem; font-weight: 600; color: var(--heading); margin: 0 0 .25rem; line-height: 1.35; }
+.pub__label {
+  font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-weight: 700; color: var(--link); margin-right: .45em; white-space: nowrap;
+}
 .pub__authors { margin: 0 0 .15rem; color: var(--text); font-size: .96rem; }
 .pub__authors .me { color: var(--heading); font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
 .pub__authors sup { color: var(--link); }
@@ -241,6 +245,11 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 1.25rem; }
 .awards li { margin: 0 0 .55rem; }
 .awards li::marker { color: var(--muted); }
 .awards__year { color: var(--muted); white-space: nowrap; }
+
+/* ---------- Blog teaser (homepage) ---------- */
+.section[hidden] { display: none; }
+.blog-teaser__sum { color: var(--muted); }
+.blog-teaser__more { margin: .9rem 0 0; font-size: .92rem; }
 
 /* ---------- Footer ---------- */
 .footer {

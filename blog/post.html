@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog · Nam Cao</title>
+  <meta name="description" content="Writing by Nam Cao on AI research, mathematics, and music." />
+  <meta name="author" content="Nam Cao" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Blog · Nam Cao" />
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%232f6db5'/%3E%3Ctext%20x='16'%20y='23'%20font-family='Arial,sans-serif'%20font-size='19'%20font-weight='700'%20fill='%23ffffff'%20text-anchor='middle'%3EN%3C/text%3E%3C/svg%3E" />
+
+  <!-- Prevent theme flash before CSS loads -->
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem("theme");
+        var sysDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.setAttribute("data-theme", saved || (sysDark ? "dark" : "light"));
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <!-- KaTeX stylesheet (pulls its own fonts) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.17.0/dist/katex.min.css"
+        integrity="sha384-vlBdW0r3AcZO/HboRPznQNowvexd3fY8qHOWkBi5q7KGgqJ+F48+DceybYmrVbmB"
+        crossorigin="anonymous" />
+
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="blog.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ───────────────  NAV  ─────────────── -->
+  <header class="nav">
+    <div class="nav__inner">
+      <a class="nav__brand" href="../index.html">Nam Cao</a>
+      <nav class="nav__links" aria-label="Sections">
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#news">News</a>
+        <a href="../index.html#publications">Publications</a>
+        <a href="../index.html#projects">Projects</a>
+        <a href="../index.html#awards">Awards</a>
+        <a class="is-active" href="./">Blog</a>
+      </nav>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle theme">
+        <svg class="ic-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
+        <svg class="ic-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 13.5A8.5 8.5 0 1 1 10.5 3a6.8 6.8 0 0 0 10.5 10.5Z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <article class="post">
+      <p class="post__back"><a href="./">← All posts</a></p>
+      <h1 class="post__title" id="postTitle">Loading…</h1>
+      <p class="post__meta" id="postMeta"></p>
+
+      <div class="post__layout">
+        <div class="post__body" id="postBody"></div>
+
+        <aside class="toc" id="toc" hidden>
+          <p class="toc__label">Contents</p>
+          <nav id="tocNav" aria-label="Table of contents"></nav>
+        </aside>
+      </div>
+
+      <nav class="postnav" id="postNav" aria-label="Other posts" hidden></nav>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <p>Nam Cao · <a href="mailto:hainamkaist@gmail.com">hainamkaist@gmail.com</a></p>
+    <p><a href="./">All posts</a> · <a href="../index.html">Homepage</a></p>
+  </footer>
+
+  <!-- Figure lightbox -->
+  <div class="lightbox" id="lightbox" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-label="Figure viewer">
+    <button class="lightbox__close" id="lightboxClose" aria-label="Close figure viewer">&times;</button>
+    <img class="lightbox__img" id="lightboxImg" src="" alt="" />
+  </div>
+
+  <!-- Markdown pipeline. `defer` keeps execution in source order:
+       katex → katex marked-extension → marked → highlight.js → mermaid → blog.js -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.17.0/dist/katex.min.js"
+          integrity="sha384-AtrdNsnxl/75rvBneBVH7DtOvCxSVahR2zWqle1coBKd8DEmLoviqNeJSx64gNAs"
+          crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/marked@18.0.7/lib/marked.umd.js"
+          integrity="sha384-7njNzKcJUBdezPGfqUrIFizi2QkXJH0M6wF3o1h9GE/nce6X4YdecMwh31B19yTi"
+          crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/marked-katex-extension@5.1.10/lib/index.umd.js"
+          integrity="sha384-XxGEZv9F7hWupeJBnhRjriQyXeFcyOlXo3zlrowvdAwLwShaBaRBTAOUaFCxfO7J"
+          crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11.11.1/highlight.min.js"
+          integrity="sha384-RH2xi4eIQ/gjtbs9fUXM68sLSi99C7ZWBRX1vDrVv6GQXRibxXLbwO2NGZB74MbU"
+          crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mermaid@11.16.0/dist/mermaid.min.js"
+          integrity="sha384-T/0lMUdJpd2S1ZHtRiofG3htU3xPCrFVeAQ1UUE2TJwlEJSV5NUwn30kP28n238E"
+          crossorigin="anonymous"></script>
+
+  <script src="../script.js" defer></script>
+  <script src="blog.js" defer></script>
+</body>
+</html>

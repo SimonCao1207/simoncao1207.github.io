@@ -1,0 +1,563 @@
+/* ============================================================
+   Nam Cao — blog styles
+   Layered on top of style.css: reuses its theme tokens and only
+   adds what the listing and the long-form post pages need.
+   ============================================================ */
+
+:root[data-theme="light"] {
+  --code-bg:    #f7f8fa;
+  --figure-bg:  #ffffff;
+  --table-border: #d3dae4;   /* outer frame + header rule */
+  --table-line:   #e9edf3;   /* inner grid */
+  --table-head:   #f3f7fc;   /* header band */
+  --table-group:  #e3ecf9;   /* section-label band */
+  --table-hover:  #f1f6fd;
+  --spd-up:       #127a4a;   /* faster than baseline */
+  --spd-down:     #c0392b;   /* slower than baseline */
+
+  --t2-border:    #a9b2c4;   /* tick/cross tables: slate, heavier frame */
+  --t2-line:      #dde1e9;
+  --t2-head:      #eceef5;
+  --t2-group:     #dcdfeb;
+  --t2-hover:     #f2f4f9;
+
+  /* Legend tags. Hues are categorical slots 1-6 of the reference palette,
+     in fixed order; each text step is darkened until it clears 4.5:1 on its
+     own tint. Colour follows the topic, never its position. */
+  --tag-gqa-bg:  #e1ecf9;  --tag-gqa-fg:  #256abc;
+  --tag-textvqa-bg: #fceae3;  --tag-textvqa-fg: #b04e27;
+  --tag-caption-bg:   #dff4ec;  --tag-caption-fg:   #137c57;
+  --tag-chartqa-bg:  #fcf2db;  --tag-chartqa-fg:  #956500;
+  --tag-reasoning-bg:   #fcedf2;  --tag-reasoning-fg:   #a05571;
+  --tag-multiturn-bg:  #dbeedb;  --tag-multiturn-fg:  #007a00;
+
+  /* The same six hues as column identity: one slot per group of sub-columns.
+     Used at full strength for the header label and its rule, and washed out
+     to a few percent behind the group's cells. */
+  --cat-1: #256abc;  --cat-2: #b04e27;  --cat-3: #137c57;
+  --cat-4: #956500;  --cat-5: #a05571;  --cat-6: #007a00;
+
+  --hl-comment: #6b7280;
+  --hl-keyword: #8250df;
+  --hl-string:  #0a7b53;
+  --hl-number:  #b35309;
+  --hl-title:   #2f6db5;
+  --hl-type:    #953800;
+}
+
+:root[data-theme="dark"] {
+  --code-bg:    #161a20;
+  --figure-bg:  #ffffff;
+  --table-border: #3b4450;
+  --table-line:   #2b313a;
+  --table-head:   #232a34;
+  --table-group:  #27313f;
+  --table-hover:  #262d38;
+  --spd-up:       #5fbf8a;
+  --spd-down:     #ef8a7c;
+
+  --t2-border:    #55607a;
+  --t2-line:      #333a47;
+  --t2-head:      #2a303c;
+  --t2-group:     #333b4b;
+  --t2-hover:     #2d3441;
+
+  /* Same six hues, stepped for the dark surface — selected, not flipped. */
+  --tag-gqa-bg:  #22354e;  --tag-gqa-fg:  #619fea;
+  --tag-textvqa-bg: #452b24;  --tag-textvqa-fg: #e17e56;
+  --tag-caption-bg:   #1b3a35;  --tag-caption-fg:   #42af8a;
+  --tag-chartqa-bg:  #41351c;  --tag-chartqa-fg:  #cf941f;
+  --tag-reasoning-bg:   #442938;  --tag-reasoning-fg:   #df799e;
+  --tag-multiturn-bg:  #15341c;  --tag-multiturn-fg:  #4ca84c;
+
+  --cat-1: #619fea;  --cat-2: #e17e56;  --cat-3: #42af8a;
+  --cat-4: #cf941f;  --cat-5: #df799e;  --cat-6: #4ca84c;
+
+  --hl-comment: #8b949e;
+  --hl-keyword: #d2a8ff;
+  --hl-string:  #8ad4a4;
+  --hl-number:  #ffa657;
+  --hl-title:   #6aa6e6;
+  --hl-type:    #ffbe8a;
+}
+
+.blog-error {
+  border: 1px solid var(--border); border-left: 3px solid #d35f4e;
+  border-radius: 6px; padding: .9rem 1.1rem; color: var(--muted);
+}
+.blog-error code {
+  font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-size: .88em; background: var(--chip-bg); padding: .1em .38em; border-radius: 4px;
+}
+
+/* ============================================================
+   Listing
+   ============================================================ */
+
+.blog-head { padding-bottom: .8rem; }
+.blog-head .section__note { margin-top: -.4rem; max-width: 46rem; }
+
+.tagbar { display: flex; flex-wrap: wrap; gap: .45rem; margin: 0 0 1.6rem; }
+.chip {
+  font-size: .86rem; font-weight: 600; line-height: 1;
+  padding: .42em .85em; border-radius: 999px;
+  border: 1px solid var(--border); background: var(--chip-bg); color: var(--muted);
+  transition: color .18s ease, border-color .18s ease, background-color .18s ease;
+}
+.chip:hover { color: var(--link); border-color: var(--link); text-decoration: none; }
+.chip.is-active {
+  color: #fff; background: var(--link); border-color: var(--link);
+}
+:root[data-theme="dark"] .chip.is-active { color: #16191f; }
+
+.postlist { list-style: none; margin: 0; padding: 0; }
+.postitem {
+  display: grid; grid-template-columns: 240px 1fr; gap: 1.6rem;
+  align-items: center; padding: 1.3rem 0;
+}
+.postitem + .postitem { border-top: 1px solid var(--border); }
+
+/* Image panel on the left, as in the Research Projects section. */
+.postitem__thumb {
+  display: block; overflow: hidden; aspect-ratio: 16 / 9;
+  border: 1px solid var(--border); border-radius: 8px;
+  background: var(--figure-bg);
+  transition: border-color .18s ease;
+}
+.postitem__thumb:hover { border-color: var(--link); }
+.postitem__thumb img {
+  width: 100%; height: 100%;
+  object-fit: contain;   /* whole figure, never cropped */
+}
+/* Fallback panel for a post with no image yet. */
+.postitem__thumb--empty { display: grid; place-items: center; background: var(--chip-bg); }
+.postitem__thumb--empty span {
+  font-size: .78rem; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--muted);
+}
+
+.postitem__title { font-size: 1.15rem; font-weight: 600; margin: 0 0 .25rem; line-height: 1.35; }
+.postitem__title a { color: var(--heading); }
+.postitem__title a:hover { color: var(--link); text-decoration: none; }
+.postitem__summary { margin: 0 0 .45rem; color: var(--muted); font-size: .96rem; }
+.postitem__meta { margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; }
+.postitem__date { color: var(--muted); font-size: .88rem; font-variant-numeric: tabular-nums; }
+
+.posttag { font-size: .82rem; font-weight: 600; color: var(--link); }
+.posttag__sep, .post__dot { color: var(--border); font-size: .82rem; }
+
+.postlist__empty { color: var(--muted); padding: 1.2rem 0; }
+
+/* ============================================================
+   Post page
+   ============================================================ */
+
+/* A post reads wider than the rest of the site: the prose column carries wide
+   measurement tables, so it breaks out past --maxw. Only the post page does —
+   `main` elsewhere keeps the site width, as do the nav and footer. */
+main:has(.post) {
+  max-width: 1320px;
+  /* Sat centred it reads left-heavy, since the prose column is the wide half
+     and the contents rail the narrow one. Trading margin from the left for
+     margin on the right slides the whole post off-centre — by 90px where the
+     window has that to give, by less where it doesn't, by nothing once the
+     window is no wider than the post. */
+  margin-left: auto;
+  margin-right: max(1.25rem, calc((100vw - 1320px) / 2 - 90px));
+}
+.post { max-width: 1280px; margin: 0 auto; padding: 2.2rem 0 1rem; }
+.post__back { margin: 0 0 1.1rem; font-size: .9rem; }
+.post__back a { color: var(--muted); }
+.post__back a:hover { color: var(--link); text-decoration: none; }
+
+.post__title {
+  font-size: 2rem; font-weight: 700; line-height: 1.22;
+  color: var(--heading); margin: 0 0 .5rem; letter-spacing: -.01em;
+}
+.post__meta {
+  margin: 0 0 2rem; color: var(--muted); font-size: .92rem;
+  display: flex; flex-wrap: wrap; align-items: center; gap: .5rem;
+  padding-bottom: 1.2rem; border-bottom: 1px solid var(--border);
+}
+.post__draft {
+  font-size: .72rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+  color: #d35f4e; padding: .1em .5em; border: 1px solid currentColor; border-radius: 4px;
+}
+:root[data-theme="dark"] .post__draft { color: #ef8a7c; }
+
+.post__layout {
+  display: grid; grid-template-columns: minmax(0, 1fr) 200px;
+  gap: 3rem; align-items: start;
+}
+/* No table of contents → prose takes the full width. */
+.post__layout:has(> .toc[hidden]) { grid-template-columns: minmax(0, 1fr); }
+
+/* ---------- Table of contents ---------- */
+.toc { position: sticky; top: 74px; font-size: .88rem; }
+.toc__label {
+  margin: 0 0 .5rem; font-size: .74rem; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase; color: var(--muted);
+}
+.toc nav { display: flex; flex-direction: column; border-left: 2px solid var(--border); }
+.toc__link {
+  color: var(--muted); padding: .28rem 0 .28rem .75rem;
+  margin-left: -2px; border-left: 2px solid transparent; line-height: 1.4;
+}
+.toc__link--h3 { padding-left: 1.5rem; font-size: .84rem; }
+.toc__link:hover { color: var(--link); text-decoration: none; }
+.toc__link.is-active { color: var(--link); border-left-color: var(--link); }
+
+/* ============================================================
+   Prose
+   ============================================================ */
+
+.post__body { line-height: 1.75; }
+.post__body > *:first-child { margin-top: 0; }
+
+.post__body h2 {
+  font-size: 1.42rem; font-weight: 700; color: var(--heading);
+  margin: 2.6rem 0 .9rem; padding-bottom: .35rem; line-height: 1.3;
+  border-bottom: 1px solid var(--border);
+}
+.post__body h3 { font-size: 1.14rem; font-weight: 700; color: var(--heading); margin: 2rem 0 .6rem; line-height: 1.35; }
+.post__body h4 { font-size: 1rem; font-weight: 700; color: var(--heading); margin: 1.6rem 0 .5rem; }
+
+.head-anchor {
+  margin-left: .45rem; color: var(--border); font-weight: 400;
+  opacity: 0; transition: opacity .15s ease;
+}
+h2:hover .head-anchor, h3:hover .head-anchor, .head-anchor:focus { opacity: 1; color: var(--link); }
+
+.post__body p { margin: 0 0 1.15rem; }
+.post__body ul, .post__body ol { margin: 0 0 1.15rem; padding-left: 1.4rem; }
+.post__body li { margin: 0 0 .4rem; }
+.post__body li::marker { color: var(--muted); }
+.post__body li > ul, .post__body li > ol { margin: .4rem 0 .2rem; }
+
+.post__body blockquote {
+  margin: 1.4rem 0; padding: .2rem 0 .2rem 1.1rem;
+  border-left: 3px solid var(--border); color: var(--muted);
+}
+.post__body blockquote p:last-child { margin-bottom: 0; }
+
+.post__body hr { border: 0; border-top: 1px solid var(--border); margin: 2.4rem 0; }
+
+.post__body strong { color: var(--heading); font-weight: 700; }
+.post__body sup, .post__body sub { line-height: 0; }
+
+/* ---------- Figures ---------- */
+.post__figure { margin: 1.8rem 0; }
+.post__figure img {
+  width: 100%; height: auto;
+  border: 1px solid var(--border); border-radius: 8px; background: var(--figure-bg);
+}
+/* The training panels are already small-multiple sized; at the full column
+   width they overwhelm the prose, so this one runs narrower and centred. */
+.post__figure img[src$="skd-training.svg"] { max-width: 820px; margin: 0 auto; }
+.post__figure figcaption {
+  margin-top: .6rem; text-align: center;
+  color: var(--muted); font-size: .88rem; line-height: 1.5;
+}
+/* A caption that carries its own **Figure N.** label is set like the table
+   captions — full-width body text, above the thing it describes — so the two
+   read as one convention. */
+.post__figure figcaption.is-labelled {
+  margin: 0 0 .9rem; text-align: left;
+  color: var(--text); font-size: 1rem; line-height: 1.75;
+}
+
+/* ---------- Tables ---------- */
+.table-wrap {
+  overflow-x: auto;
+  margin: 1.7rem 0;
+  border: 1px solid var(--table-border);
+  border-radius: 10px;      /* rounded frame; clips the scroll area cleanly */
+  background: var(--bg);
+}
+.post__body table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 0;
+  font-size: .9rem;
+  font-variant-numeric: tabular-nums;
+}
+.post__body th,
+.post__body td {
+  padding: .55rem .85rem;
+  text-align: left;
+  border-right: 1px solid var(--table-line);
+  border-bottom: 1px solid var(--table-line);
+}
+.post__body th:last-child,
+.post__body td:last-child { border-right: 0; }
+.post__body tbody tr:last-child td { border-bottom: 0; }
+
+.post__body thead th {
+  background: var(--table-head);
+  color: var(--heading);
+  font-weight: 700;
+  font-size: .76rem;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  border-bottom: 2px solid var(--table-border);
+}
+
+/* The row label names a method; keep it on one line so a hyphenated name like
+   SKD-hybrid-KL (K=1) does not break across two rows of text. The wrap already
+   scrolls sideways if the grid outgrows the column. */
+.post__body tbody td:first-child {
+  font-weight: 600;
+  color: var(--heading);
+  white-space: nowrap;
+}
+.post__body tbody tr:hover td { background: var(--table-hover); }
+
+/* Bold inside a data cell marks the better of the values being compared, in
+   the hue of the column it belongs to. The weight carries the same signal as
+   the hue, so the pair still reads without colour. */
+.post__body tbody td strong { color: var(--cat, var(--spd-up)); font-weight: 700; }
+
+/* ---------- Two-row headers ---------- */
+/* An empty Markdown header cell merges into the one on its left (blog.js), so
+   one label spans a group of sub-columns; the row of sub-labels below it is
+   lifted into the head as .subhead. The heavy rule belongs under the whole
+   header, so the top row only carries a hairline — except where a label spans
+   both rows and so ends at the bottom of the head. */
+.post__body thead tr:first-child:not(:last-child) th:not([rowspan]) {
+  border-bottom: 1px solid var(--table-line);
+}
+.post__body thead th[rowspan] { vertical-align: middle; }
+.post__body thead tr.subhead th {
+  font-size: .68rem;
+  font-weight: 600;
+  letter-spacing: .02em;
+  text-transform: none;
+  color: var(--muted);
+  padding-top: .3rem;
+  padding-bottom: .4rem;
+}
+
+/* Column identity: the group label takes its hue, and the cells below it take
+   a wash of the same hue, so a pair of sub-columns reads as one measurement.
+   A summary group (bold label) drops to neutral and reads as the aggregate. */
+.post__body .cat-1 { --cat: var(--cat-1); }
+.post__body .cat-2 { --cat: var(--cat-2); }
+.post__body .cat-3 { --cat: var(--cat-3); }
+.post__body .cat-4 { --cat: var(--cat-4); }
+.post__body .cat-5 { --cat: var(--cat-5); }
+.post__body .cat-6 { --cat: var(--cat-6); }
+.post__body .is-summary { --cat: var(--heading); }
+
+.post__body colgroup[class] { background: color-mix(in srgb, var(--cat) 7%, transparent); }
+.post__body thead th[class] {
+  color: var(--cat);
+  box-shadow: inset 0 -3px 0 var(--cat);
+}
+/* The aggregate should not out-shout the data it summarises. */
+.post__body thead th.is-summary { box-shadow: inset 0 -3px 0 var(--muted); }
+
+/* Grouped tables carry twice the columns of a plain one; trim the gutters so
+   the whole grid has a chance of fitting without a sideways scroll. */
+.post__body table.is-grouped { font-size: .86rem; }
+.post__body table.is-grouped th,
+.post__body table.is-grouped td { padding: .5rem .55rem; }
+/* Group labels set the column width, so they give up their wide tracking. */
+.post__body table.is-grouped thead tr:first-child th {
+  font-size: .74rem;
+  letter-spacing: .015em;
+}
+.post__body table.is-grouped tbody td:first-child,
+.post__body table.is-grouped thead th:first-child { padding-left: .85rem; }
+.post__body table.is-grouped tbody td:last-child,
+.post__body table.is-grouped thead th:last-child { padding-right: .85rem; }
+
+/* Section-label rows — a row whose cells after the first are empty. blog.js
+   tags them and merges the cell so the label bands across the table. */
+.post__body tr.is-group td,
+.post__body tr.is-group:hover td {
+  background: var(--table-group);
+  color: var(--title);
+  font-weight: 700;
+  font-size: .74rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--table-border);
+}
+.post__body tr.is-group strong { color: inherit; font-weight: 700; }
+
+/* ---------- Task lists ---------- */
+.post__body ul:has(> li > input[type="checkbox"]) { padding-left: 0; list-style: none; }
+.post__body li:has(> input[type="checkbox"]) {
+  display: flex; align-items: baseline; gap: .6em;
+  list-style: none; margin-bottom: .5rem;
+}
+.post__body input[type="checkbox"] {
+  appearance: none; -webkit-appearance: none;
+  flex: 0 0 auto; position: relative; top: .1em;
+  width: 1.05em; height: 1.05em; margin: 0;
+  border: 1.5px solid var(--muted); border-radius: 4px;
+  background: var(--bg);
+}
+.post__body input[type="checkbox"]:checked { background: var(--link); border-color: var(--link); }
+.post__body input[type="checkbox"]:checked::after {
+  content: ""; position: absolute;
+  left: .32em; top: .1em; width: .2em; height: .48em;
+  border: solid #fff; border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+:root[data-theme="dark"] .post__body input[type="checkbox"]:checked::after { border-color: #16191f; }
+
+/* ---------- Legend tags ---------- */
+.post__body .taglist {
+  display: flex; flex-wrap: wrap; gap: .45rem;
+  margin: .8rem 0 1.5rem;
+}
+.post__body .tag {
+  display: inline-flex; align-items: baseline; gap: .45em;
+  font-size: .82rem; line-height: 1; white-space: nowrap;
+  padding: .45em .85em; border-radius: 999px;
+  background: var(--tag-bg, var(--chip-bg));
+  color: var(--tag-fg, var(--muted));
+  border: 1px solid color-mix(in srgb, var(--tag-fg, var(--border)) 26%, transparent);
+}
+.post__body .tag b { color: inherit; font-weight: 700; font-size: .78rem; letter-spacing: .04em; }
+
+/* One slot per topic — the colour tracks the topic, not its position, so
+   reordering the legend cannot repaint it. */
+.post__body .tag--gqa  { --tag-bg: var(--tag-gqa-bg);  --tag-fg: var(--tag-gqa-fg); }
+.post__body .tag--textvqa { --tag-bg: var(--tag-textvqa-bg); --tag-fg: var(--tag-textvqa-fg); }
+.post__body .tag--caption   { --tag-bg: var(--tag-caption-bg);   --tag-fg: var(--tag-caption-fg); }
+.post__body .tag--chartqa  { --tag-bg: var(--tag-chartqa-bg);  --tag-fg: var(--tag-chartqa-fg); }
+.post__body .tag--reasoning   { --tag-bg: var(--tag-reasoning-bg);   --tag-fg: var(--tag-reasoning-fg); }
+.post__body .tag--multiturn  { --tag-bg: var(--tag-multiturn-bg);  --tag-fg: var(--tag-multiturn-fg); }
+@media (max-width: 640px) {
+  .post__body .tag { white-space: normal; }
+}
+
+/* Speedups, coloured by blog.js. Bold/regular carries the same signal as the
+   hue, so the pair still reads under red-green colour blindness. */
+.post__body .spd-up   { color: var(--spd-up); font-weight: 700; }
+.post__body .spd-down { color: var(--spd-down); }
+
+/* Pass / fail marks. The glyph differs as well as the hue, so the pair does
+   not rely on colour alone. */
+.post__body .mark-yes { color: var(--spd-up); font-weight: 700; font-size: 1.05em; }
+.post__body .mark-no  { color: var(--spd-down); font-weight: 700; font-size: 1.05em; }
+
+/* Tick/cross tables: slate palette and a heavier frame, to read as a different
+   kind of table from the measurement grids. */
+.post__body .table-wrap--marks {
+  border-width: 2px;
+  border-color: var(--t2-border);
+}
+.post__body .table-wrap--marks th,
+.post__body .table-wrap--marks td { border-color: var(--t2-line); }
+.post__body .table-wrap--marks thead th {
+  background: var(--t2-head);
+  border-bottom: 2px solid var(--t2-border);
+}
+.post__body .table-wrap--marks tr.is-group td,
+.post__body .table-wrap--marks tr.is-group:hover td {
+  background: var(--t2-group);
+  border-bottom: 1px solid var(--t2-border);
+}
+.post__body .table-wrap--marks tbody tr:hover td { background: var(--t2-hover); }
+
+.post__body th[align="right"], .post__body td[align="right"] { text-align: right; }
+.post__body th[align="center"], .post__body td[align="center"] { text-align: center; }
+
+/* ---------- Code ---------- */
+.post__body :not(pre) > code {
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: .87em; padding: .12em .4em; border-radius: 4px;
+  background: var(--chip-bg); border: 1px solid var(--border);
+  overflow-wrap: break-word;
+}
+.post__body pre {
+  position: relative; margin: 1.5rem 0; padding: 1rem 1.1rem;
+  background: var(--code-bg); border: 1px solid var(--border); border-radius: 8px;
+  overflow-x: auto; font-size: .86rem; line-height: 1.62;
+}
+.post__body pre code {
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  background: none; border: 0; padding: 0; color: var(--text);
+}
+
+.code-copy {
+  position: absolute; top: .5rem; right: .5rem;
+  font: inherit; font-size: .74rem; font-weight: 600; line-height: 1;
+  padding: .4em .7em; border-radius: 5px; cursor: pointer;
+  border: 1px solid var(--border); background: var(--bg); color: var(--muted);
+  opacity: 0; transition: opacity .15s ease, color .15s ease, border-color .15s ease;
+}
+pre.has-copy:hover .code-copy, .code-copy:focus { opacity: 1; }
+.code-copy:hover { color: var(--link); border-color: var(--link); }
+
+/* highlight.js tokens, mapped onto the site palette */
+.hljs-comment, .hljs-quote { color: var(--hl-comment); font-style: italic; }
+.hljs-keyword, .hljs-selector-tag, .hljs-literal, .hljs-doctag, .hljs-name { color: var(--hl-keyword); }
+.hljs-string, .hljs-regexp, .hljs-addition, .hljs-attribute, .hljs-meta .hljs-string { color: var(--hl-string); }
+.hljs-number, .hljs-symbol, .hljs-bullet, .hljs-link, .hljs-variable, .hljs-template-variable { color: var(--hl-number); }
+.hljs-title, .hljs-section, .hljs-title.function_, .hljs-title.class_ { color: var(--hl-title); font-weight: 600; }
+.hljs-type, .hljs-built_in, .hljs-class .hljs-title, .hljs-params { color: var(--hl-type); }
+.hljs-meta, .hljs-comment .hljs-doctag { color: var(--hl-comment); }
+.hljs-deletion { color: #d35f4e; }
+.hljs-emphasis { font-style: italic; }
+.hljs-strong { font-weight: 700; }
+
+/* ---------- Math ---------- */
+.post__body .katex { font-size: 1.05em; }
+.post__body .katex-display {
+  overflow-x: auto; overflow-y: hidden;
+  padding: .5em 0; margin: 1.4rem 0;
+}
+
+/* ---------- Mermaid ---------- */
+.post__body .mermaid { margin: 1.8rem 0; text-align: center; overflow-x: auto; }
+.post__body .mermaid svg { max-width: 100%; height: auto; display: inline-block; }
+
+/* ---------- Prev / next ---------- */
+.postnav {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+  margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border);
+}
+.postnav[hidden] { display: none; }
+.postnav__link {
+  display: flex; flex-direction: column; gap: .2rem;
+  padding: .9rem 1rem; border: 1px solid var(--border); border-radius: 8px;
+  transition: border-color .18s ease;
+}
+.postnav__link:hover { border-color: var(--link); text-decoration: none; }
+.postnav__link--next { text-align: right; }
+.postnav__dir { color: var(--muted); font-size: .8rem; font-weight: 600; }
+.postnav__title { color: var(--heading); font-size: .95rem; font-weight: 600; line-height: 1.35; }
+.postnav__link:hover .postnav__title { color: var(--link); }
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+
+@media (max-width: 980px) {
+  .postitem { grid-template-columns: 200px 1fr; gap: 1.2rem; }
+  .post__layout { grid-template-columns: minmax(0, 1fr); gap: 1.6rem; }
+  .toc {
+    position: static; order: -1;
+    border: 1px solid var(--border); border-radius: 8px; padding: .9rem 1rem;
+  }
+  .toc nav { border-left: 0; }
+  .toc__link { padding-left: 0; border-left: 0; }
+  .toc__link--h3 { padding-left: .9rem; }
+  .toc__link.is-active { border-left-color: transparent; }
+}
+
+@media (max-width: 640px) {
+  .post { padding-top: 1.6rem; }
+  .post__title { font-size: 1.6rem; }
+  .postitem { grid-template-columns: 1fr; gap: .85rem; padding: 1.1rem 0; }
+  .postitem__thumb { max-width: 320px; }
+  .postitem__date { font-size: .85rem; }
+  .postnav { grid-template-columns: 1fr; gap: .8rem; }
+  .postnav__link--next { text-align: left; }
+  .code-copy { opacity: 1; }
+}

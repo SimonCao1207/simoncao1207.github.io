@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog · Nam Cao</title>
+  <meta name="description" content="Writing by Nam Cao on AI research, mathematics, and music." />
+  <meta name="author" content="Nam Cao" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Blog · Nam Cao" />
+  <meta property="og:description" content="Writing on AI research, mathematics, and music." />
+  <meta property="og:url" content="https://simoncao1207.github.io/blog/" />
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%232f6db5'/%3E%3Ctext%20x='16'%20y='23'%20font-family='Arial,sans-serif'%20font-size='19'%20font-weight='700'%20fill='%23ffffff'%20text-anchor='middle'%3EN%3C/text%3E%3C/svg%3E" />
+
+  <!-- Prevent theme flash before CSS loads -->
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem("theme");
+        var sysDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.setAttribute("data-theme", saved || (sysDark ? "dark" : "light"));
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="blog.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ───────────────  NAV  ─────────────── -->
+  <header class="nav">
+    <div class="nav__inner">
+      <a class="nav__brand" href="../index.html">Nam Cao</a>
+      <nav class="nav__links" aria-label="Sections">
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#news">News</a>
+        <a href="../index.html#publications">Publications</a>
+        <a href="../index.html#projects">Projects</a>
+        <a href="../index.html#awards">Awards</a>
+        <a class="is-active" href="./" aria-current="page">Blog</a>
+      </nav>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle theme">
+        <svg class="ic-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
+        <svg class="ic-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 13.5A8.5 8.5 0 1 1 10.5 3a6.8 6.8 0 0 0 10.5 10.5Z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <span id="top"></span>
+
+    <section class="section blog-head">
+      <h1 class="section__title">Blog</h1>
+      <p class="section__note">
+        Notes on AI research and mathematics, and — separately — on music.
+        Rougher and more exploratory than the papers.
+      </p>
+    </section>
+
+    <div class="tagbar" id="tagbar" role="group" aria-label="Filter posts by tag"></div>
+
+    <ul class="postlist" id="postlist"></ul>
+    <p class="postlist__empty" id="postlistEmpty" hidden></p>
+  </main>
+
+  <footer class="footer">
+    <p>Nam Cao · <a href="mailto:hainamkaist@gmail.com">hainamkaist@gmail.com</a></p>
+    <p><a href="../index.html">Homepage</a> · <a href="#top">Back to top ↑</a></p>
+  </footer>
+
+  <script src="../script.js" defer></script>
+  <script src="blog.js" defer></script>
+</body>
+</html>

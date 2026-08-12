@@ -44,6 +44,7 @@
         <a href="#publications">Publications</a>
         <a href="#projects">Projects</a>
         <a href="#awards">Awards</a>
+        <a href="blog/">Blog</a>
       </nav>
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle theme">
         <svg class="ic-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
@@ -102,7 +103,7 @@
       <ul class="news">
         <li>
           <span class="news__date">May 2026</span>
-          <span class="news__text">🎉 My first paper as co-first author, <strong>BASTION</strong>, was selected for an <strong>oral presentation</strong> at the ICML 2026 <a href="https://adaptfm.gitlab.io/" target="_blank" rel="noopener">AdaptFM</a> workshop (Resource-Adaptive Foundation Model Inference)!</span>
+          <span class="news__text">🎉 My first paper as co-first author, <strong>BASTION</strong>, was selected for an <strong>oral presentation</strong> at the ICML 2026 <a href="https://adaptfm.gitlab.io/" target="_blank" rel="noopener">AdaptFM</a> workshop!</span>
         </li>
         <li>
           <span class="news__date">Feb 2026</span>
@@ -141,7 +142,7 @@
     <!-- ───────────────  PUBLICATIONS  ─────────────── -->
     <section class="section" id="publications">
       <h2 class="section__title">Publications</h2>
-      <p class="section__note"><sup>*</sup> equal contribution</p>
+      <p class="section__note"><sup>*</sup> equal contribution &nbsp;·&nbsp; <strong>C</strong> conference &nbsp; <strong>W</strong> workshop &nbsp; <strong>P</strong> preprint</p>
       <h3 class="pub-year">2026</h3>
       <ul class="pubs">
         <li class="pub">
@@ -151,7 +152,7 @@
             </a>
           </div>
           <div class="pub__body">
-            <h4 class="pub__title">BASTION: Budget-Aware Speculative Decoding with Tree-structured Block Diffusion Drafting</h4>
+            <h4 class="pub__title"><span class="pub__label">[W1]</span>BASTION: Budget-Aware Speculative Decoding with Tree-structured Block Diffusion Drafting</h4>
             <p class="pub__authors"><strong class="me">Nam Cao</strong><sup>*</sup>, Soowon Oh<sup>*</sup>, Yujin Kim, Hojung Jung, Huzama Ahmad, Sangmin Bae, Se-Young Yun</p>
             <p class="pub__venue"><em>Resource-Adaptive Foundation Model Inference (AdaptFM) Workshop, ICML 2026</em> &nbsp;<strong class="pub__badge">Oral</strong></p>
             <p class="pub__links">
@@ -167,7 +168,7 @@
             </a>
           </div>
           <div class="pub__body">
-            <h4 class="pub__title">Stage-wise Attention-Guided Region Sequencing for Adversarial Attacks on Large Vision-Language Models (SAGA)</h4>
+            <h4 class="pub__title"><span class="pub__label">[P1]</span>Stage-wise Attention-Guided Region Sequencing for Adversarial Attacks on Large Vision-Language Models (SAGA)</h4>
             <p class="pub__authors">Jaehyun Kwak, <strong class="me">Nam Cao</strong>, Boryeong Cho, Segyu Lee, Sumyeong Ahn, Se-Young Yun</p>
             <p class="pub__venue"><em>Manuscript under review</em>, 2026</p>
             <p class="pub__links">
@@ -224,6 +225,14 @@
         <li><strong>KAIST International Undergraduate Scholarship</strong> — Full-ride scholarship. <span class="awards__year">(2020)</span></li>
         <li><strong>Vietnam Mathematical Olympiad (VMO)</strong> — Bronze Medal. <span class="awards__year">(2018, 2019)</span></li>
       </ul>
+    </section>
+
+    <!-- ───────────────  BLOG  ─────────────── -->
+    <!-- Filled in by script.js from blog/posts.json; stays hidden if there is nothing to show. -->
+    <section class="section" id="blog" hidden>
+      <h2 class="section__title">Write Up</h2>
+      <ul class="news" id="recentPosts"></ul>
+      <p class="blog-teaser__more"><a href="blog/">All posts →</a></p>
     </section>
   </main>
 
