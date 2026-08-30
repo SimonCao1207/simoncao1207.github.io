@@ -1,3 +1,7 @@
 # Unused source files — not served by the site
 assets/avatar_2.jpeg
 assets/*.pdf
+
+# Timestamped editor backups (.<name>.bak, .<name>.bak-YYYYMMDD-HHMMSS)
+*.bak
+*.bak-*

@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "slug": "efficient-inference",
+      "title": "Efficient Inference",
+      "date": "2026-08-13",
+      "tags": [
+        "AI"
+      ],
+      "summary": "WIP",
+      "draft": true
+    },
+    {
       "slug": "speculative-on-policy-distillation",
       "title": "Speculative On-Policy Distillation",
       "date": "2026-08-11",
