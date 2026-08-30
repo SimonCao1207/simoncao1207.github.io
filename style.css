@@ -105,7 +105,7 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 1.25rem; }
   grid-template-columns: 200px 1fr;
   gap: 2.4rem;
   align-items: start;
-  padding: 3rem 0 2.4rem;
+  padding: 2.4rem 0 1.6rem;
 }
 .about__card { text-align: center; }
 .avatar {
@@ -119,6 +119,11 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 1.25rem; }
 .about__icons { display: flex; justify-content: center; gap: .9rem; }
 .about__icons a { color: var(--muted); display: grid; place-items: center; }
 .about__icons a:hover { color: var(--link); }
+.about__cv {
+  font-size: .82rem; font-weight: 700; letter-spacing: .06em; line-height: 1;
+  padding: .3em .55em; border: 1px solid currentColor; border-radius: 5px;
+}
+.about__cv:hover { text-decoration: none; }
 .about__icons svg {
   width: 21px; height: 21px;
   fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round;
@@ -128,10 +133,10 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 1.25rem; }
 .about__bio p:last-child { margin-bottom: 0; }
 
 /* ---------- Sections ---------- */
-.section { padding: 1.6rem 0; }
+.section { padding: .9rem 0; }
 .section__title {
   font-size: 1.4rem; font-weight: 700; color: var(--title);
-  margin: 0 0 1.1rem; padding-bottom: .4rem;
+  margin: 0 0 .8rem; padding-bottom: .35rem;
   border-bottom: 2px solid var(--border);
 }
 .section__note { margin: -.6rem 0 1rem; color: var(--muted); font-size: .88rem; }
@@ -288,7 +293,7 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 1.25rem; }
   .nav__links { display: none; }
   .about {
     grid-template-columns: 1fr; gap: 1.4rem; text-align: center;
-    padding-top: 2.2rem;
+    padding-top: 1.8rem;
   }
   .about__bio { text-align: left; }
   .news li { grid-template-columns: 1fr; gap: .1rem; padding: .5rem 0; }
