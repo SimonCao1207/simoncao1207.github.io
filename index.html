@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nam Cao</title>
-  <meta name="description" content="Nam Cao (Simon) is an M.S. student at KAIST AI (OSI Lab) working on efficient large language models: speculative decoding, diffusion language models, RL post-training, and AI for science." />
+  <meta name="description" content="Nam Cao (Simon) is an M.S. student at KAIST AI (OSI Lab) working on efficient large language models: speculative decoding, diffusion language models, AI safety, and AI for science." />
   <meta name="author" content="Nam Cao" />
 
   <meta property="og:type" content="website" />
@@ -75,7 +75,7 @@
           <a href="https://www.linkedin.com/in/nam-cao-797789168/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0ZM.25 8.25h4.5V23h-4.5V8.25ZM8.25 8.25h4.31v2h.06c.6-1.07 2.06-2.2 4.24-2.2 4.54 0 5.38 2.86 5.38 6.58V23h-4.5v-6.53c0-1.56-.03-3.56-2.17-3.56-2.17 0-2.5 1.7-2.5 3.45V23h-4.5V8.25Z"/></svg>
           </a>
-          <a class="about__cv" href="https://drive.google.com/file/d/1SHZpsBSLeqRJmGUNcdF7KORChszGzTZr/view?usp=sharing" target="_blank" rel="noopener" title="Curriculum Vitae">CV</a>
+          <a class="about__cv" href="https://drive.google.com/file/d/13GZxbv-5CrrJpJpAYPc8LJxTcymS-KxR/view?usp=sharing" target="_blank" rel="noopener" title="Curriculum Vitae">CV</a>
         </div>
       </div>
 
@@ -85,15 +85,12 @@
           <strong class="role-highlight">Ph.D. or Research Engineer positions</strong>.
         </p>
         <p>
-          My research centers on <strong>efficient large language models</strong> and high-performance
-          inference and serving systems. Most recently I have focused on <strong>speculative decoding</strong>,
-          particularly on using diffusion language models as drafters — making inference faster and more
-          cost-efficient under constrained compute budgets without sacrificing quality.
-        </p>
-        <p>
-          In parallel, I explore <strong>RL post-training</strong> and <strong>on-policy distillation</strong>
-          for LLMs, the adversarial robustness of vision-language models, and <strong>AI for Science</strong>,
-          currently through foundation models for weather forecasting.
+          My research centers on <strong>efficient LLMs</strong>&nbsp;[<a href="#pub-c1">C1</a>,&nbsp;<a href="#pub-p1">P1</a>]
+          and high-performance inference and serving systems. Recently, I have been interested in
+          <strong>speculative decoding</strong> with diffusion language models as drafters&nbsp;[<a href="#pub-c1">C1</a>],
+          a path toward faster and more cost-efficient inference without sacrificing quality under constrained
+          compute budgets. In parallel, I have been exploring <strong>AI safety</strong> for LLMs&nbsp;[<a href="#pub-c2">C2</a>],
+          as well as <strong>AI for Science</strong>, currently through foundation models for weather forecasting.
         </p>
       </div>
     </section>
@@ -150,7 +147,7 @@
       <p class="section__note"><sup>*</sup> equal contribution &nbsp;·&nbsp; <strong>C</strong> conference &nbsp; <strong>W</strong> workshop &nbsp; <strong>P</strong> preprint</p>
       <h3 class="pub-year">2026</h3>
       <ul class="pubs">
-        <li class="pub">
+        <li class="pub" id="pub-c1">
           <div class="pub__thumb">
             <a class="zoom" href="assets/pub-bastion-full.png" aria-label="Enlarge BASTION figure">
               <img src="assets/pub-bastion.png" alt="BASTION main figure" width="756" height="513" loading="lazy" />
@@ -167,7 +164,7 @@
             </p>
           </div>
         </li>
-        <li class="pub">
+        <li class="pub" id="pub-c2">
           <div class="pub__thumb">
             <a class="zoom" href="assets/pub-saga-full.png" aria-label="Enlarge SAGA figure">
               <img src="assets/pub-saga.png" alt="SAGA main figure" width="793" height="370" loading="lazy" />
@@ -182,7 +179,7 @@
             </p>
           </div>
         </li>
-        <li class="pub">
+        <li class="pub" id="pub-p1">
           <div class="pub__thumb">
             <a class="zoom" href="assets/pub-cascadeformer.png" aria-label="Enlarge CascadeFormer figure">
               <img src="assets/pub-cascadeformer.png" alt="CascadeFormer representation angular distance figure" width="518" height="458" loading="lazy" />
@@ -278,7 +275,7 @@
 
   <footer class="footer">
     <p>Nam Cao · <a href="mailto:hainamkaist@gmail.com">hainamkaist@gmail.com</a></p>
-    <p>Last updated September 2026 · <a href="#top">Back to top ↑</a></p>
+    <p>Last updated October 2026 · <a href="#top">Back to top ↑</a></p>
   </footer>
 
   <!-- Figure lightbox -->

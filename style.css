@@ -159,6 +159,7 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 1.25rem; }
   gap: 1.6rem;
   align-items: center;
   padding: 1rem 0 1.2rem;
+  scroll-margin-top: 54px;   /* [C1]-style citation links land below the sticky nav */
 }
 .pub + .pub { border-top: 1px solid var(--border); padding-top: 1.2rem; }
 .pub__thumb { margin: 0; }
